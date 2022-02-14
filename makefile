@@ -1,5 +1,5 @@
-output: main.o lexer.o parser.o shell.o strsplit.o
-	g++ obj/main.o obj/lexer.o obj/parser.o obj/shell.o obj/strsplit.o -o mlang
+output: main.o lexer.o shell.o strsplit.o 
+	g++ obj/main.o obj/lexer.o obj/shell.o obj/strsplit.o -o mlang
 
 main.o: src/main.cpp
 	g++ -c src/main.cpp -o obj/main.o
@@ -7,8 +7,8 @@ main.o: src/main.cpp
 lexer.o: include/lexer.cpp
 	g++ -c include/lexer.cpp -o obj/lexer.o
 
-parser.o: include/parser.cpp
-	g++ -c include/parser.cpp -o obj/parser.o
+#parser.o: include/parser.cpp
+#	g++ -c include/parser.cpp -o obj/parser.o
 
 shell.o: include/shell.cpp
 	g++ -c include/shell.cpp -o obj/shell.o
@@ -16,3 +16,5 @@ shell.o: include/shell.cpp
 strsplit.o: include/strsplit.cpp
 	g++ -c include/strsplit.cpp -o obj/strsplit.o
 
+#nodes.o: include/nodes.cpp
+#	g++ -c include/nodes.cpp -o obj/node.o

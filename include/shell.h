@@ -4,15 +4,14 @@
 #include <string>
 #include <vector>
 #include "./lexer.h"
-#include "./parser.h"
 #include "./token.h"
+#include "./parser.h"
 
 class Shell {
 private:
-	Parser parser;
 
 public:
-	Shell(Parser& _parser);
+	Shell();
 	void run();
 
 };

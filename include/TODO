@@ -1,0 +1,27 @@
+#####  ##  ###   ##   #
+  #   #  # #  # #  #
+  #   #  # #  # #  #
+  #    ##  ###   ##   #
+
+COMPLETELY REWRITE PARSER/NODE TREE THING
+
+DESIGN A BETTER PARSE TREE FROM GROUND UP 
+BASED ON BINARY SEARCH TREES
+
+
+FUCK THIS DESIGN
+
+Single Node object
+has byte that if
+ 
+ 1 - Number Node
+ 0 - Binary Op Node
+
+Has multiple constructors
+one for number node
+one for bin op node
+
+FIX ALL CONSTRUCTORS NEEDED IN PARSER.CPP
+
+I am too tired to fix it right now good night..
+

@@ -3,7 +3,6 @@
 #include <string>
 
 const std::string TOKEN_INT = "INT";
-const std::string TOKEN_FLOAT = "FLOAT";
 const std::string TOKEN_PLUS = "PLUS";
 const std::string TOKEN_MINUS = "MINUS";
 const std::string TOKEN_MUL = "MUL";
@@ -18,9 +17,16 @@ public:
 		value = _value;
 	}
 
-	Token(std::string _type) {
-		type = _type;
-		value = "OPERATOR";
+	Token(std::string _value) {
+		value = _value;
+		type = "OPERATOR";
+	}
+
+	Token() {}
+	
+	std::string str() {
+		std::string to_return = "[ " + type + " : " + value + " ]";
+		return to_return;
 	}
 
 	std::string type;

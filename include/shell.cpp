@@ -16,13 +16,17 @@ void Shell::run() {
 		std::getline(std::cin, current_input);
 		lexer = Lexer(current_input);
 		tokens = lexer.make_token();
+
+		//Parser parser = Parser(tokens);
+		//Node ast = parser.parse();
+
 		for(Token t : tokens) {
-			std::cout << t.type << " : " << t.value << ", ";
+			std::cout << t.str() << ", ";
 		}
+
 		std::cout << "\n";
 	}
 }
 
-Shell::Shell(Parser& _parser) {
-	parser = _parser;
+Shell::Shell() {
 }

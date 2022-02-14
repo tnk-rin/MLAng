@@ -15,6 +15,7 @@ public:
 
 private:
 	std::vector<std::string> text;
+	std::vector<Token> error_lst;
 	int position;
 	std::string curr_word;
 	bool is_number(const std::string& s);

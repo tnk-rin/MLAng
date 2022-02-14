@@ -5,6 +5,7 @@ std::vector<std::string> split(const std::string &s, char line_delim, char word_
 	std::vector<std::string> lines;
 	std::stringstream ss(s);
 	std::string line, word;
+
 	while(getline(ss, line, line_delim))
 		lines.push_back(line);
 	for(std::string w : lines) {

@@ -4,9 +4,20 @@ Lexer::Lexer(const std::string& _text) {
 	char line_delim = '.',
 	     word_delim = ' ';
 	text = split(_text, line_delim, word_delim);
+	int EOL_count = 0;
+	for(char c : _text) {
+		if (c == line_delim)
+			++EOL_count;
+	}
+
+	if(EOL_count == 0 && _text != "") {
+		IllegalLineEnding warning = IllegalLineEnding(_text);
+		std::cout << warning.str() << "\n";
+	}
 	position = -1;
 	curr_word = "";
 	advance();
+
 }
 
 void Lexer::advance() {
@@ -15,7 +26,7 @@ void Lexer::advance() {
 }
 
 std::vector<Token> Lexer::make_token() {
-	std::vector<Token> tokens, error_lst;
+	std::vector<Token> tokens;
 
 	while (curr_word != "EOL") {
 		if(curr_word == "plus")

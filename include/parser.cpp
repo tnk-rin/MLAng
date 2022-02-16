@@ -6,46 +6,53 @@ Parser::Parser(std::vector<Token> pTokens) {
 	advance();
 }
 
+struct Nodes* Parser::parse() {
+	struct Nodes* result = expression();
+	return result;
+}
+
 Token Parser::advance() {
-	token_index += 1;
+	++token_index;
 	if(token_index < tokens.size())
 		current_token = tokens[token_index];
 	return current_token;
 }
 
-Node Parser::factor() {
-	Token tok = current_token;	
-	if (tok.type == TOKEN_INT) {
+struct Nodes* Parser::factor() {
+	Token tok = current_token;
+	if(tok.type == TOKEN_INT) {
 		advance();
-		return Node(tok);
+		struct Nodes* toReturn = new Nodes();
+		toReturn->mode = 0;
+		toReturn->token = tok;
+		return toReturn;
 	}
-	return Node(Token("NULL", "NULL"));
+	return NULL;
 }
 
-Node Parser::term() {
+struct Nodes* Parser::term() {
 	return binaryOp(0, { TOKEN_MUL, TOKEN_DIV });
 }
 
-Node Parser::expression() {
+struct Nodes* Parser::expression() {
 	return binaryOp(1, { TOKEN_PLUS, TOKEN_MINUS });
 }
 
-Node Parser::binaryOp(uint8_t mode, std::vector<std::string> operators) {
-	Node left = mode ? term() : factor();
-	uint8_t inOps = 0;
-	
-	for(std::string s : operators)
-		s == current_token.type ? ++inOps : inOps;
-	
-	while (inOps > 0) {
-		inOps = 0;
+struct Nodes* Parser::binaryOp(uint8_t mode, std::vector<std::string> operators) {
+	struct Nodes* left;
+	left = (mode == 1) ? term() : factor();
+
+	while (std::find(operators.begin(), operators.end(), current_token.value) != operators.end()) {
 		Token op_token = current_token;
-		Node right = mode ? term() : factor();
-		left = Node(left, op_token, right);
-		for(std::string s : operators)
-			s == current_token.type ? ++inOps : inOps;
+		advance();
+		struct Nodes* right;
+		right = (mode == 1) ? term() : factor();
+		struct Nodes* newLeft = new Nodes();
+		newLeft->left = left;
+		newLeft->right = right;
+		newLeft->opToken = op_token;
+		newLeft->mode = 1;
+		left = newLeft;
 	}
-
+	return left;
 }
-
-

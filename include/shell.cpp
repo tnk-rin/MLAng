@@ -17,12 +17,15 @@ void Shell::run() {
 		lexer = Lexer(current_input);
 		tokens = lexer.make_token();
 
-		//Parser parser = Parser(tokens);
-		//Node ast = parser.parse();
+		Parser parser = Parser(tokens);
+		struct Nodes* ast = parser.parse();
 
-		for(Token t : tokens) {
-			std::cout << t.str() << ", ";
-		}
+		//std::cout << "Syntax Tree: " << ast.str() << "\n\nLexer: ";
+
+		//for(Token t : tokens)
+		//	std::cout << t.str() << ", ";
+		
+		std::cout << "\n[ " << ast->left->token.str() << " " << ast->opToken.str() << " " << ast->right->opToken.str() << " " << ast->right->left->token.str() << " : " << ast->right->right->token.str() << " ] \n";
 
 		std::cout << "\n";
 	}

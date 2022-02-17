@@ -9,9 +9,9 @@ Example.MLA
 A for loop with integer i ranging from 1 to 10, x equals i times 10, print x to the console, if x is greater than or equal to 30, print the 
 string "wow thats a big number!" to the console, that concludes the for loop.
 
-	This is the test function, it defines a string s with value "test", it prints s to the console, finally returning.
+	This is function test, it defines a string s with value "test", it prints s to the console, finally returning.
 
-	This is the other test function, it returns an integer, it defines an integer n with value 10. 
+	This is function otherTest, it returns an integer, it defines an integer n with value 10. 
 A loop runs while n is greater than or equal to 0, print n to the console, that concludes the while loop.
 
 

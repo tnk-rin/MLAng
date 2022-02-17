@@ -7,6 +7,7 @@
 #include <stdint.h>
 #include "./token.h"
 #include "./nodes.h"
+#include "./error.h"
 
 class Parser {
 	public:

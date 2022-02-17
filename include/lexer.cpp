@@ -35,7 +35,7 @@ std::vector<Token> Lexer::make_token() {
 			tokens.push_back(Token(TOKEN_MINUS));	
 		else if(curr_word == "times")
 			tokens.push_back(Token(TOKEN_MUL));
-		else if(curr_word == "divide")
+		else if(curr_word == "divided" || curr_word == "over")
 			tokens.push_back(Token(TOKEN_DIV));
 		else if(curr_word == "(")
 			tokens.push_back(Token(TOKEN_LPAREN));
@@ -51,6 +51,7 @@ std::vector<Token> Lexer::make_token() {
 
 		advance();
 	}
+	tokens.push_back(Token(TOKEN_EOF));
 	return tokens;
 }
 

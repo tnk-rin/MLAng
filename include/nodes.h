@@ -1,17 +1,22 @@
 #pragma once
 #include <string>
 #include "./token.h"
+#include "./error.h"
 
 struct Nodes {
 	int mode;
 	Token token, opToken;
+	Error* error;
 	struct Nodes* left;
 	struct Nodes* right;
+	struct Nodes* node;
 	
 	Nodes() {
-		mode = 0;
+		mode = -1;
 		left = NULL;
 		right = NULL;
+		node = NULL;
+		error = NULL;
 	}
 };
 

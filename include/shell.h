@@ -13,6 +13,7 @@ private:
 
 public:
 	Shell();
+	std::string printTree(struct Nodes* tree);
 	void run();
 
 };

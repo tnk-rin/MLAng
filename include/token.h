@@ -9,16 +9,17 @@ const std::string TOKEN_MUL = "MUL";
 const std::string TOKEN_DIV = "DIV";
 const std::string TOKEN_LPAREN = "LPAREN";
 const std::string TOKEN_RPAREN = "RPAREN";
+const std::string TOKEN_EOF = "EOF";
 
 class Token {
 public:
-	Token(std::string _type, std::string _value) {
-		type = _type;
-		value = _value;
+	Token(std::string pType, std::string pValue) {
+		type = pType;
+		value = pValue;
 	}
 
-	Token(std::string _value) {
-		value = _value;
+	Token(std::string pValue) {
+		value = pValue;
 		type = "OPERATOR";
 	}
 
@@ -31,5 +32,4 @@ public:
 
 	std::string type;
 	std::string value;
-
 };

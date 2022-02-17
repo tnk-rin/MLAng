@@ -20,12 +20,35 @@ Token Parser::advance() {
 
 struct Nodes* Parser::factor() {
 	Token tok = current_token;
-	if(tok.type == TOKEN_INT) {
+	if(tok.type == TOKEN_PLUS || tok.type == TOKEN_MINUS) {
+		advance();
+		struct Nodes* _FACTOR = factor();
+		struct Nodes* toReturn = new Nodes();
+		toReturn->mode = 2;
+		toReturn->node = _FACTOR;
+		toReturn->token = tok;
+		return toReturn;
+	} else if(tok.type == TOKEN_INT) {
 		advance();
 		struct Nodes* toReturn = new Nodes();
 		toReturn->mode = 0;
 		toReturn->token = tok;
 		return toReturn;
+	} else if(tok.type == TOKEN_LPAREN) {
+		advance();
+		struct Nodes* _EXPR = expression();
+		if (current_token.type == TOKEN_RPAREN) {
+			advance();
+			return _EXPR;
+		} else {
+			InvalidSyntax error = InvalidSyntax("Missing ')'");
+			struct Nodes* errorNode = new Nodes();
+			errorNode->mode = -2;
+			errorNode->token = current_token;
+			errorNode->error = &error;
+			return errorNode;
+		}
+
 	}
 	return NULL;
 }

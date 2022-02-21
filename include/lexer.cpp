@@ -10,7 +10,7 @@ Lexer::Lexer(const std::string& _text) {
 			++EOL_count;
 	}
 
-	if(EOL_count == 0 && _text != "") {
+	if(EOL_count == 0 && _text != "" && _text != "exit") {
 		IllegalLineEnding warning = IllegalLineEnding(_text);
 		std::cout << warning.str() << "\n";
 	}
@@ -43,7 +43,10 @@ std::vector<Token> Lexer::make_token() {
 			tokens.push_back(Token(TOKEN_RPAREN));
 		else if(is_number(curr_word))
 			tokens.push_back(Token(TOKEN_INT, curr_word));
-		else {
+		else if(curr_word == "exit") {
+			error_lst.push_back(Token("INTERNAL", "__abort_interpreter"));
+			return error_lst;		
+		} else {
 			IllegalWordError error = IllegalWordError(curr_word);
 			std::cout << error.str() << "\n";
 			return error_lst; 

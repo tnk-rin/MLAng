@@ -6,7 +6,9 @@
 \* -------------------------------------------------------------- */
 
 void Shell::run() {
-	printf("MLAng Interpreter (g++)\n\n");
+	std::string message = "MLAng Interpreter (";
+	message += cxx + " " + cxx_ver + ")\n\n";
+	std::cout << message;
 	std::string prompt = ">> ",
 		current_input;
 	Lexer lexer = Lexer("");
@@ -16,6 +18,8 @@ void Shell::run() {
 		std::getline(std::cin, current_input);
 		lexer = Lexer(current_input);
 		tokens = lexer.make_token();
+		if(tokens.at(0).type == "INTERNAL" && tokens.at(0).value == "__abort_interpreter")
+			return;
 
 		Parser parser = Parser(tokens);
 		struct Nodes* ast = parser.parse();
@@ -33,6 +37,8 @@ void Shell::run() {
 std::string Shell::printTree(struct Nodes* tree) {
 
 	std::string left, right, toReturn, node;
+	if (tree == NULL)
+		return "empty tree";
 
 	switch(tree->mode) {
 		case -1:

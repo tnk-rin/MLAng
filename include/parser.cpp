@@ -34,10 +34,10 @@ struct Nodes* Parser::factor() {
 		toReturn->mode = 0;
 		toReturn->token = tok;
 		return toReturn;
-	} else if(tok.type == TOKEN_LPAREN) {
+	} else if(tok.value == TOKEN_LPAREN && tok.type == "OPERATOR") {
 		advance();
 		struct Nodes* _EXPR = expression();
-		if (current_token.type == TOKEN_RPAREN) {
+		if (current_token.value == TOKEN_RPAREN && current_token.type == "OPERATOR") {
 			advance();
 			return _EXPR;
 		} else {
@@ -75,6 +75,13 @@ struct Nodes* Parser::binaryOp(uint8_t mode, std::vector<std::string> operators)
 		newLeft->right = right;
 		newLeft->opToken = op_token;
 		newLeft->mode = 1;
+
+		// if left is null replace it with zero (bodgy support for unary operators)
+		if (newLeft->left->mode == -1) {
+			newLeft->left->mode = 0;
+			Token zeroTok = Token(TOKEN_INT, "0");
+			newLeft->token = zeroTok;
+		}
 		left = newLeft;
 	}
 	return left;

@@ -10,6 +10,8 @@ const std::string TOKEN_DIV = "DIV";
 const std::string TOKEN_LPAREN = "LPAREN";
 const std::string TOKEN_RPAREN = "RPAREN";
 const std::string TOKEN_EOF = "EOF";
+const std::string TOKEN_NEGATE = "NEGATE";
+
 
 class Token {
 public:

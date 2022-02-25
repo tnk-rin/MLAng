@@ -27,7 +27,6 @@ void Lexer::advance() {
 
 std::vector<Token> Lexer::make_token() {
 	std::vector<Token> tokens;
-
 	while (curr_word != "EOL") {
 		if(curr_word == "plus")
 			tokens.push_back(Token(TOKEN_PLUS));	
@@ -37,6 +36,8 @@ std::vector<Token> Lexer::make_token() {
 			tokens.push_back(Token(TOKEN_MUL));
 		else if(curr_word == "divided" || curr_word == "over")
 			tokens.push_back(Token(TOKEN_DIV));
+		else if(curr_word == "negative")
+			tokens.push_back(Token(TOKEN_NEGATE));
 		else if(curr_word == "(")
 			tokens.push_back(Token(TOKEN_LPAREN));
 		else if(curr_word == ")")

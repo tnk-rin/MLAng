@@ -4,17 +4,10 @@ Example.MLA
 
 11 January 2022
 
+Arithmetic:
 
-	This is the main function, it defines an integer x with no value, a string s with value "Hello, World!", and floats a and b with no values. 
-A for loop with integer i ranging from 1 to 10, x equals i times 10, print x to the console, if x is greater than or equal to 30, print the 
-string "wow thats a big number!" to the console, that concludes the for loop.
+123 plus 234.
+24 times ( 45 plus 3 over 5 ).
+	  ^- space after and before parenthesis needed (will fix eventually)
 
-	This is function test, it defines a string s with value "test", it prints s to the console, finally returning.
-
-	This is function otherTest, it returns an integer, it defines an integer n with value 10. 
-A loop runs while n is greater than or equal to 0, print n to the console, that concludes the while loop.
-
-
-Sources:
-
-tnk-rin. Standard Library for MLAng. https://github.com/tnk-rin/MLAng, 2022.
+and thats all the parser supports for now, I will be updating this example file as the language gets closer to completion.

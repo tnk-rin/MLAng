@@ -75,13 +75,6 @@ struct Nodes* Parser::binaryOp(uint8_t mode, std::vector<std::string> operators)
 		newLeft->right = right;
 		newLeft->opToken = op_token;
 		newLeft->mode = 1;
-
-		// if left is null replace it with zero (bodgy support for unary operators)
-		if (newLeft->left->mode == -1) {
-			newLeft->left->mode = 0;
-			Token zeroTok = Token(TOKEN_INT, "0");
-			newLeft->token = zeroTok;
-		}
 		left = newLeft;
 	}
 	return left;

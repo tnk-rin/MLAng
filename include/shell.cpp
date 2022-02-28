@@ -18,12 +18,12 @@ void Shell::run() {
 		std::getline(std::cin, current_input);
 		lexer = Lexer(current_input);
 		tokens = lexer.make_token();
+		if (tokens.size() == 0)
+			continue;
 		if(tokens.at(0).type == "INTERNAL" && tokens.at(0).value == "__abort_interpreter")
 			return;
-
 		Parser parser = Parser(tokens);
 		struct Nodes* ast = parser.parse();
-
 		std::cout << printTree(ast);
 		//std::cout << "Syntax Tree: " << ast.str() << "\n\nLexer: ";
 

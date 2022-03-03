@@ -1,4 +1,4 @@
-MAKEOPTIONS = -Wall
+MAKEOPTIONS = -Wall -std=c++11
 CC = clang++
 
 output: main.o lexer.o shell.o strsplit.o parser.o 

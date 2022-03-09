@@ -54,7 +54,7 @@ struct Nodes* Parser::factor() {
 }
 
 struct Nodes* Parser::term() {
-	return binaryOp(0, { TOKEN_MUL, TOKEN_DIV });
+	return binaryOp(0, { TOKEN_MUL, TOKEN_DIV, TOKEN_EXP });
 }
 
 struct Nodes* Parser::expression() {

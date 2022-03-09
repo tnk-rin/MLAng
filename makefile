@@ -1,8 +1,8 @@
 MAKEOPTIONS = -Wall -std=c++11
 CC = clang++
 
-output: main.o lexer.o shell.o strsplit.o parser.o 
-	$(CC) $(MAKEOPTIONS) obj/main.o obj/lexer.o obj/shell.o obj/strsplit.o obj/parser.o -o mlang
+output: main.o lexer.o shell.o strsplit.o parser.o interpreter.o 
+	$(CC) $(MAKEOPTIONS) obj/main.o obj/lexer.o obj/shell.o obj/strsplit.o obj/parser.o obj/interpreter.o -o mlang
 
 main.o: src/main.cpp
 	$(CC) $(MAKEOPTIONS) -c src/main.cpp -o obj/main.o
@@ -18,3 +18,6 @@ shell.o: include/shell.cpp
 
 strsplit.o: include/strsplit.cpp
 	$(CC) $(MAKEOPTIONS) -c include/strsplit.cpp -o obj/strsplit.o
+
+interpreter.o: include/interpreter.cpp
+	$(CC) $(MAKEOPTIONS) -c include/interpreter.cpp -o obj/interpreter.o

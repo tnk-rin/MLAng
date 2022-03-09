@@ -24,7 +24,12 @@ void Shell::run() {
 			return;
 		Parser parser = Parser(tokens);
 		struct Nodes* ast = parser.parse();
-		std::cout << printTree(ast);
+
+		Interpreter interpreter = Interpreter();
+		Integer res = interpreter.visitIntTree(ast);
+		std::cout << res.str() << std::endl;
+
+		//std::cout << printTree(ast);
 		//std::cout << "Syntax Tree: " << ast.str() << "\n\nLexer: ";
 
 		//for(Token t : tokens)

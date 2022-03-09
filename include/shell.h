@@ -7,7 +7,7 @@
 #include "./token.h"
 #include "./parser.h"
 #include "./nodes.h"
-
+#include "./interpreter.h"
 class Shell {
 private:
 	std::string ver_string(int maj, int min, int patch) {

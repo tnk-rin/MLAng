@@ -11,7 +11,7 @@ const std::string TOKEN_LPAREN = "LPAREN";
 const std::string TOKEN_RPAREN = "RPAREN";
 const std::string TOKEN_EOF = "EOF";
 const std::string TOKEN_NEGATE = "NEGATE";
-
+const std::string TOKEN_EXP = "EXPONENT";
 
 class Token {
 public:

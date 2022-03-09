@@ -11,6 +11,7 @@ std::vector<std::string> split(const std::string &s, char line_delim, char word_
 	for(std::string w : lines) {
 		std::stringstream sw(w);
 		while(getline(sw, word, word_delim)) {
+			std::transform(word.begin(), word.end(), word.begin(), ::tolower);
 			if (word != "")
 				words.push_back(word);
 		}

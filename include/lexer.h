@@ -3,6 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
+#include <algorithm>
 #include "./strsplit.h"
 #include "./error.h"
 #include "./token.h"

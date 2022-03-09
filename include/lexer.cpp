@@ -47,6 +47,15 @@ std::vector<Token> Lexer::make_token() {
 		else if(curr_word == "exit") {
 			error_lst.push_back(Token("INTERNAL", "__abort_interpreter"));
 			return error_lst;		
+		} else if (curr_word == "raised") {
+			advance();
+			if (curr_word == "to") {
+				tokens.push_back(Token(TOKEN_EXP));
+			} else {
+				IllegalWordError error = IllegalWordError("'raised', Did you mean 'raised to'?");
+				std::cout << error.str() << "\n";
+				return error_lst;
+			}
 		} else {
 			IllegalWordError error = IllegalWordError(curr_word);
 			std::cout << error.str() << "\n";
